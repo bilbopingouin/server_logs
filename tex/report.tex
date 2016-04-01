@@ -1,0 +1,235 @@
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\includegraphicsmaybe}[2]{\IfFileExists{#1}{\includegraphics[width=#2]{#1}}{\includegraphics[width=5cm]{default.png}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Report on Analysis of Log Files}
+\date{\today}
+\author{SLA}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{auth.log}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Accepted Connections}
+
+Those are the connections that were accepted. The activity in the log file appears as
+
+\begin{center}
+  \includegraphicsmaybe{imported/accepted_hist.png}{10cm}
+\end{center}
+
+And the top connections are from
+
+\begin{center}
+  \includegraphicsmaybe{imported/accepted_ips_top.png}{7cm}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Refused Connections}
+
+For all non-accepted entries in the log file, we have the following activity
+
+\begin{center}
+  \includegraphicsmaybe{imported/denied_hist.png}{10cm}
+\end{center}
+
+An overview of the different IP concerned is given in the following
+
+\begin{center}
+  \includegraphicsmaybe{imported/denied_ips.png}{8cm}
+\end{center}
+
+With a Top 5 IPs as
+
+\begin{center}
+  \includegraphicsmaybe{imported/denied_ips_top.png}{7cm}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Invalid Username}
+
+Attempted connection with unknown usernames are summarised in this section. We have the following activity
+
+\begin{center}
+  \includegraphicsmaybe{imported/invalid_hist.png}{10cm}
+\end{center}
+
+An overview of the different IP concerned is given in the following
+
+\begin{center}
+  \includegraphicsmaybe{imported/invalid_ips.png}{8cm}
+\end{center}
+
+With a Top 5 IPs as
+
+\begin{center}
+  \includegraphicsmaybe{imported/invalid_ips_top.png}{7cm}
+\end{center}
+
+The usernames distribution looks like
+
+\begin{center}
+  \includegraphicsmaybe{imported/invalid_usr.png}{8cm}
+\end{center}
+
+and its top 5 is
+
+\begin{center}
+  \includegraphicsmaybe{imported/invalid_usr_top.png}{8cm}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Failed Password}
+
+For failed passwords. We have the following activity
+
+\begin{center}
+  \includegraphicsmaybe{imported/failed_hist.png}{10cm}
+\end{center}
+
+An overview of the different IP concerned is given in the following
+
+\begin{center}
+  \includegraphicsmaybe{imported/failed_ips.png}{8cm}
+\end{center}
+
+With a Top 5 IPs as
+
+\begin{center}
+  \includegraphicsmaybe{imported/failed_ips_top.png}{7cm}
+\end{center}
+
+The usernames distribution looks like
+
+\begin{center}
+  \includegraphicsmaybe{imported/failed_usr.png}{8cm}
+\end{center}
+
+and its top 5 is
+
+\begin{center}
+  \includegraphicsmaybe{imported/failed_usr_top.png}{8cm}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Identification String Missing}
+
+Identification string were not received from connection attempts. We have the following activity
+
+\begin{center}
+  \includegraphicsmaybe{imported/no_id_string_hist.png}{10cm}
+\end{center}
+
+An overview of the different IP concerned is given in the following
+
+\begin{center}
+  \includegraphicsmaybe{imported/no_id_string_ips.png}{8cm}
+\end{center}
+
+With a Top 5 IPs as
+
+\begin{center}
+  \includegraphicsmaybe{imported/no_id_string_ips_top.png}{7cm}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{root Login Refused}
+
+Attempts to log in as root. We have the following activity
+
+\begin{center}
+  \includegraphicsmaybe{imported/root_refused_hist.png}{10cm}
+\end{center}
+
+An overview of the different IP concerned is given in the following
+
+\begin{center}
+  \includegraphicsmaybe{imported/root_refused_ips.png}{8cm}
+\end{center}
+
+With a Top 5 IPs as
+
+\begin{center}
+  \includegraphicsmaybe{imported/root_refused_ips_top.png}{7cm}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Break-In}
+
+The mapping for the IP does not match. It is a possible break-in attempt. We have the following activity
+
+\begin{center}
+  \includegraphicsmaybe{imported/break_in_hist.png}{10cm}
+\end{center}
+
+An overview of the different IP concerned is given in the following
+
+\begin{center}
+  \includegraphicsmaybe{imported/break_in_ips.png}{8cm}
+\end{center}
+
+With a Top 5 IPs as
+
+\begin{center}
+  \includegraphicsmaybe{imported/break_in_ips_top.png}{7cm}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Received Disconnect [preauth]}
+
+The system received a 'disconnect' signal. We have the following activity
+
+\begin{center}
+  \includegraphicsmaybe{imported/disconnect_hist.png}{10cm}
+\end{center}
+
+An overview of the different IP concerned is given in the following
+
+\begin{center}
+  \includegraphicsmaybe{imported/disconnect_ips.png}{8cm}
+\end{center}
+
+With a Top 5 IPs as
+
+\begin{center}
+  \includegraphicsmaybe{imported/disconnect_ips_top.png}{7cm}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Usernames}
+
+The full list of attempted usernames is given in the following with their relative frequency
+
+\emph{\input{imported/usernames.txt}}
+
+\end{document}

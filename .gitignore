@@ -1,0 +1,6 @@
+# temporary files
+*.swp
+
+# Generated files directories
+auth/tmp/
+auth/out/

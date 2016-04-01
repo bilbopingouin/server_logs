@@ -4,3 +4,9 @@
 # Generated files directories
 auth/tmp/
 auth/out/
+
+# Tex files
+tex/imported/
+tex/report.aux
+tex/report.log
+tex/report.pdf

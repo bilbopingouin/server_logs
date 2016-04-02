@@ -1,6 +1,12 @@
 #============================================
 # Get data
-data = read.csv("tmp/data.csv");
+args <- commandArgs(TRUE);
+#str(args)
+#data = read.csv("tmp/data.csv");
+#cat("filename: ",args[2])
+dir <- args[2]
+data <- read.csv(paste0(dir,"tmp/data.csv"));
+#str(data)
 
 #============================================
 # Get a timing
@@ -22,20 +28,20 @@ plot_df = function(df,name,color="blue")
   {
 
     # Print activity
-    act_file <- paste("out/",name,"_hist.png",sep="")
+    act_file <- paste(dir,"out/",name,"_hist.png",sep="")
     png(filename=act_file, width=860);
     hist(df$timestamp, breaks=time_bins, xlim=c(0,max_time), xlab="Time [days]", col=color, main="");
     dev.off(); 
 
     # Print IPs histogram
-    ip_file <- paste("out/",name,"_ips.png",sep="")
+    ip_file <- paste(dir,"out/",name,"_ips.png",sep="")
     png(filename=ip_file, width=860);
     barplot(sort(table(as.character(df$ip)), decreasing=TRUE), col=color, xaxt='n');
     dev.off();
 
     # Print top 5
     par(cex.axis=0.8)
-    topip_file <- paste("out/",name,"_ips_top.png",sep="")
+    topip_file <- paste(dir,"out/",name,"_ips_top.png",sep="")
     png(filename=topip_file, width=640);
     barplot(sort(table(as.character(df$ip)), decreasing=TRUE)[1:5], col=color);
     dev.off();
@@ -48,14 +54,14 @@ plot_usernames = function(df,name,color="blue")
   if (length(df$var) > 0)
   {
     # Print usernames histogram
-    ip_file <- paste("out/",name,"_usr.png",sep="")
+    ip_file <- paste(dir,"out/",name,"_usr.png",sep="")
     png(filename=ip_file, width=860);
     barplot(sort(table(as.character(df$var)), decreasing=TRUE), col=color, xaxt='n');
     dev.off();
 
     # Print top 5
     par(cex.axis=0.8)
-    topip_file <- paste("out/",name,"_usr_top.png",sep="")
+    topip_file <- paste(dir,"out/",name,"_usr_top.png",sep="")
     png(filename=topip_file, width=640);
     barplot(sort(table(as.character(df$var)), decreasing=TRUE)[1:5], col=color);
     dev.off();
@@ -109,5 +115,5 @@ plot_df(data_disconnect,"disconnect","#f0ff02")
 #============================================
 # Usernames
 usernames <-sort(table(as.character(data[data$var != 0,]$var)),decreasing=TRUE)
-write.csv(usernames,file="tmp/usernames.txt")
+write.csv(usernames,file=paste0(dir,"tmp/usernames.txt"))
 

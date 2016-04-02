@@ -1,18 +1,22 @@
 #!/bin/bash
 
+# Get information about where we are located
+DIR=$(echo "$0" | sed 's/^\(.*\/\)[^\/]\+$/\1/')
+
 ## Analyse /var/log/auth.log
-cd auth
-./analyse_auth.sh
-cd ..
+echo "	A /var/log/auth.log"
+$DIR/auth/analyse_auth.sh
 
 ## Import data
-find tex/imported/* -type f -delete
-rsync -avr auth/out/* tex/imported/
+echo "	MV data to tex dir"
+find $DIR/tex/imported/* -type f -delete
+rsync -avr $DIR/auth/out/* $DIR/tex/imported/
 
 ## Compile the report
-cd tex
+echo "	C LaTeX report"
+cd $DIR/tex
 pdflatex report.tex
 pdflatex report.tex
-cd ..
+cd -
 
 

@@ -1,14 +1,16 @@
 #!/bin/bash
 
-echo "# $(date)"
+#echo "# $(date)"
 #echo "-----------------------"  >> $OUTFILE
 #date >> $OUTFILE
-echo "# var/log/auth.log covers from $(head -1 /var/log/auth.log | awk '{ print $1,$2,$3}') to $(tail -1 /var/log/auth.log | awk '{ print $1,$2,$3}')"
+#echo "# var/log/auth.log covers from $(head -1 /var/log/auth.log | awk '{ print $1,$2,$3}') to $(tail -1 /var/log/auth.log | awk '{ print $1,$2,$3}')"
+echo "mon,day,h,m,s,type,ip,var"
+
 
 cat /var/log/auth.log | while read line
 do
   #echo ">> $line"
-  echo "mon,day,h,m,s,type,ip,var"
+  #echo "mon,day,h,m,s,type,ip,var"
   
   # 1. Invalid user
   echo "$line" | sed -n 's/^\(\w\+\ *[0-9]\{1,2\}\ *[0-9]\{2\}\):\([0-9]\+\):\([0-9]\+\).\+Invalid\ user\ \(.\+\)\ .\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1,\2,\3,1,\5,\4/p'

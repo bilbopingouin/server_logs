@@ -1,12 +1,8 @@
 #============================================
 # Get data
 args <- commandArgs(TRUE);
-#str(args)
-#data = read.csv("tmp/data.csv");
-#cat("filename: ",args[2])
 dir <- args[2]
 data <- read.csv(paste0(dir,"tmp/data.csv"));
-#str(data)
 
 #============================================
 # Get a timing

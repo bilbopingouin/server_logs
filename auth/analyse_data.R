@@ -2,7 +2,7 @@
 # Get data
 args <- commandArgs(TRUE);
 dir <- args[2]
-data <- read.csv(paste0(dir,"tmp/data.csv"));
+data <- read.csv(paste0(dir,"tmp/data.csv"),row.names=NULL);
 
 #============================================
 # Get a timing

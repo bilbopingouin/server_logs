@@ -3,13 +3,13 @@
 use strict;
 use warnings;
 
-print "year,mon,day,hour,min,ip,reqt,reqp,status,size,ref"
+print "year,mon,day,hour,min,sec,ip,req,status,size,ref\n";
 
 while(<STDIN>)
 {
   my $line = $_;
 
-  if ( $line =~ /^(\d+\.\d+\.\d+\.\d+)\ \-\ \-\ \[(\d+)\/(\w+)\/(\d+):(\d+):(\d+):(\d+)\ [+-]\d+\]\ *"(GET|CONNECT)\ *\/\ *([^"]+)"\ +(\d+)\ +(\d+)\ +"([^"]+)"\ +"([^"]+)"/ )
+  if ( $line =~ /^(\d+\.\d+\.\d+\.\d+)\ \-\ \-\ \[(\d+)\/(\w+)\/(\d+):(\d+):(\d+):(\d+)\ [+-]\d+\]\ *"([^"]+)"\ +(\d+)\ +(\d+)\ +"([^"]+)"\ +"([^"]+)"/ )
 
   {
     my $ip = $1;
@@ -18,12 +18,13 @@ while(<STDIN>)
     my $year = $4;
     my $hour = $5;
     my $min = $6;
+    my $sec = $7;
     my $con_key = $8;
     my $con_pro = $9;
-    my $status = $10;
-    my $size = $11;
-    my $ref = $12;
-    my $useragent = $13;
+    my $status = $9;
+    my $size = $10;
+    my $ref = $11;
+    my $useragent = $12;
 
     my $month = $month_alpha;
 
@@ -77,8 +78,8 @@ while(<STDIN>)
     }
     
 
-    print $year,',',$month,',',$day,',',$hour,',',$min,',',$ip,',';
-    print $con_key,',',$con_pro,',',$status,',',$size,',';
+    print $year,',',$month,',',$day,',',$hour,',',$min,',',$sec,',',$ip,',';
+    print $con_key,',',$status,',',$size,',';
     print $ref,"\n";
     #print $ref,',',$useragent,"\n"; # useragent not necessarily useful and complicate the output
 

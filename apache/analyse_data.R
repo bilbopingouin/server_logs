@@ -32,7 +32,7 @@ plot_df = function(df,name,color="blue")
     # Print IPs histogram
     ip_file <- paste(dir,"out/",name,"_ips.png",sep="");
     png(filename=ip_file, width=860);
-    barplot(sort(table(as.character(df$ip)), decreasing=TRUE), col=color, xaxt='n');
+    barplot(sort(table(as.character(df$ip)), decreasing=TRUE), col=color, las=2);
     dev.off();
 
     # Print top 5
@@ -43,6 +43,13 @@ plot_df = function(df,name,color="blue")
     dev.off();
     par(cex.axis=1);
 
+    # Print Requests Types
+    topreq_file <- paste(dir,"out/",name,"_reqs_top.png",sep="");
+    png(filename=topreq_file, width=860);
+    barplot(sort(table(as.character(df$req)), decreasing=TRUE), col=color, las=2);
+    dev.off();
+
+    # Print Requests Types: Top5
     topreq_file <- paste(dir,"out/",name,"_reqs_top.png",sep="");
     png(filename=topreq_file, width=640);
     barplot(sort(table(as.character(df$req)), decreasing=TRUE)[1:5], col=color);

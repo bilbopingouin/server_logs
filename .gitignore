@@ -2,6 +2,8 @@
 *.swp
 
 # Generated files directories
+apache/tmp/
+apache/out/
 auth/tmp/
 auth/out/
 
